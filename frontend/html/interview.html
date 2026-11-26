@@ -10,6 +10,7 @@
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 	<link rel="stylesheet" href="../css/interview.css">
+	<script src="../js/api-client.js" defer></script>
 	<script src="../js/interview.js" defer></script>
 </head>
 <body>
@@ -39,7 +40,7 @@
 			<header class="topbar">
 				<button class="mobile-menu-toggle" type="button" aria-expanded="false" aria-controls="sidebar" aria-label="Open navigation"><span></span><span></span></button>
 				<div class="breadcrumb"><a href="dashboard.html">Workspace</a><span aria-hidden="true">/</span><strong id="breadcrumb-current">New interview</strong></div>
-				<div class="preview-label"><span class="preview-dot"></span> PREVIEW MODE</div>
+				<div class="preview-label"><span class="preview-dot"></span> AI PRACTICE SESSION</div>
 			</header>
 
 			<div class="content-wrap">
@@ -51,17 +52,19 @@
 
 					<div class="setup-grid">
 						<form class="setup-form" id="setup-form">
-							<div class="form-section-heading"><span class="form-step-number">01</span><div><h2>Session details</h2><p>Use enough context to make this session easy to identify.</p></div></div>
+							<div class="form-section-heading"><span class="form-step-number">01</span><div><h2>Session details</h2><p>Set your target role and a topic to research against authoritative sources.</p></div></div>
 							<div class="form-fields">
-								<div class="field-group"><label for="candidate-name">Candidate name</label><input id="candidate-name" name="candidateName" type="text" autocomplete="off" placeholder="e.g. Jordan Lee" maxlength="100" required></div>
-								<div class="field-group"><label for="role-title">Role being interviewed for</label><input id="role-title" name="roleTitle" type="text" autocomplete="off" placeholder="e.g. Product designer" maxlength="120" required></div>
+								<div class="field-group"><label for="candidate-name">Your name</label><input id="candidate-name" name="candidateName" type="text" autocomplete="name" placeholder="e.g. Jordan Lee" maxlength="100" required></div>
+								<div class="field-group"><label for="role-title">Target role</label><input id="role-title" name="roleTitle" type="text" autocomplete="off" placeholder="e.g. Product designer" maxlength="120" required></div>
+								<div class="field-group field-group-wide"><label for="interview-topic">Interview topic</label><input id="interview-topic" name="topic" type="text" autocomplete="off" placeholder="e.g. Python concurrency, product discovery, or cloud security" maxlength="200" required></div>
 								<div class="field-group"><label for="interview-focus">Interview focus</label><select id="interview-focus" name="focus"><option value="balanced">Balanced conversation</option><option value="behavioral">Behavioral experience</option><option value="technical">Technical problem solving</option><option value="collaboration">Communication &amp; collaboration</option></select></div>
 								<div class="field-group"><label for="session-length">Planned length</label><select id="session-length" name="duration"><option value="30">30 minutes</option><option value="45" selected>45 minutes</option><option value="60">60 minutes</option></select></div>
 							</div>
 							<div class="form-divider"></div>
 							<div class="form-section-heading objectives-heading"><span class="form-step-number">02</span><div><h2>Keep it consistent</h2><p>Use the same role context throughout the interview and review.</p></div></div>
 							<label class="consistency-control" for="structured-mode"><input id="structured-mode" type="checkbox" checked><span class="toggle-track" aria-hidden="true"></span><span><strong>Structured interview</strong><small>Follow a shared set of prompts for this focus area.</small></span></label>
-							<div class="setup-footer"><span class="setup-disclaimer"><span aria-hidden="true">ⓘ</span> Preview prompts are sample content, not AI-generated.</span><button class="primary-action" type="submit">Prepare interview <span aria-hidden="true">→</span></button></div>
+							<p class="setup-message" id="setup-message" role="status" aria-live="polite"></p>
+							<div class="setup-footer"><span class="setup-disclaimer"><span aria-hidden="true">ⓘ</span> Questions use official-source research. Feedback is based on your written answers, not audio or body language.</span><button class="primary-action" id="prepare-button" type="submit">Research &amp; prepare <span aria-hidden="true">→</span></button></div>
 						</form>
 
 						<aside class="prep-aside" aria-label="Preparation notes">
@@ -82,29 +85,30 @@
 					<div class="session-grid">
 						<section class="question-panel" aria-labelledby="question-title">
 							<div class="question-topline"><span class="question-category" id="question-category">OPENING</span><span class="question-mark" aria-hidden="true">Q</span></div>
-							<p class="question-overline">ASK THE CANDIDATE</p><h2 id="question-title"></h2><p class="question-prompt-hint" id="question-hint"></p>
-							<label class="answer-label" for="answer-notes">Your notes <span>Private to this preview</span></label>
-							<textarea id="answer-notes" rows="5" placeholder="Capture key points, examples, or follow-up questions…"></textarea>
+							<p class="question-overline">ANSWER THE QUESTION</p><h2 id="question-title"></h2><p class="question-prompt-hint" id="question-hint"></p><ul class="question-source-list" id="question-source-list" aria-label="Sources for this question"></ul>
+							<label class="answer-label" for="answer-notes">Your answer <span>Used to prepare your coaching report</span></label>
+							<textarea id="answer-notes" rows="5" placeholder="Type your answer, or summarize what you said…"></textarea>
 							<div class="question-controls"><button class="secondary-button" id="previous-question" type="button" disabled><span aria-hidden="true">←</span> Previous</button><span class="answer-saved" id="answer-saved" aria-live="polite">Notes stay in this tab</span><button class="primary-action" id="next-question" type="button">Next question <span aria-hidden="true">→</span></button></div>
 						</section>
 						<aside class="session-aside">
-							<section class="session-guide"><div class="session-aside-label"><span class="guide-pulse"></span> INTERVIEW GUIDE</div><h2>Stay curious.</h2><p>Give the candidate space to finish their thought before moving on.</p><div class="follow-up"><span>FOLLOW-UP IDEA</span><p id="follow-up-text">What made that experience significant for you?</p></div></section>
-							<section class="session-tools"><p class="section-kicker">SESSION TOOLS</p><button class="tool-button" id="finish-session" type="button"><span class="tool-icon" aria-hidden="true">✓</span><span><strong>Finish interview</strong><small>Review this session’s notes</small></span><span class="tool-arrow" aria-hidden="true">→</span></button><button class="tool-button" id="cancel-session" type="button"><span class="tool-icon cancel-icon" aria-hidden="true">×</span><span><strong>End without finishing</strong><small>Discard this preview session</small></span><span class="tool-arrow" aria-hidden="true">→</span></button></section>
+							<section class="session-guide"><div class="session-aside-label"><span class="guide-pulse"></span> INTERVIEW GUIDE</div><h2>Stay curious.</h2><p>Answer as you would in a real interview. Your written response is used for evidence-based coaching.</p><div class="follow-up"><span>FOLLOW-UP IDEA</span><p id="follow-up-text">What made that experience significant for you?</p></div></section>
+							<section class="session-tools"><p class="section-kicker">OFFICIAL SOURCES</p><ul class="session-source-list" id="session-source-list"></ul></section>
+							<section class="session-tools"><p class="section-kicker">SESSION TOOLS</p><button class="tool-button" id="finish-session" type="button"><span class="tool-icon" aria-hidden="true">✓</span><span><strong>Finish &amp; get feedback</strong><small>Generate your performance report</small></span><span class="tool-arrow" aria-hidden="true">→</span></button><button class="tool-button" id="cancel-session" type="button"><span class="tool-icon cancel-icon" aria-hidden="true">×</span><span><strong>End without finishing</strong><small>Discard this interview</small></span><span class="tool-arrow" aria-hidden="true">→</span></button></section>
 						</aside>
 					</div>
-					<p class="session-disclaimer"><span aria-hidden="true">ⓘ</span> This is a local preview. No audio is recorded and notes are not saved to an account.</p>
+					<p class="session-disclaimer" id="session-message" role="status" aria-live="polite"><span aria-hidden="true">ⓘ</span> No audio is recorded. Your written answers are saved to your account when you finish.</p>
 				</section>
 
 				<section class="complete-view is-hidden" id="complete-view" aria-labelledby="complete-title" tabindex="-1">
 					<div class="complete-mark" aria-hidden="true"><span>✓</span></div>
 					<p class="eyebrow"><span class="eyebrow-line"></span> SESSION WRAPPED</p>
 					<h1 id="complete-title">A good conversation<br><em>leaves a trail.</em></h1>
-					<p class="complete-copy">Your preview notes are ready to review. They remain in this browser tab only.</p>
+					<p class="complete-copy">Your interview is saved. Review your evidence-based feedback and next-step practice plan.</p>
 					<div class="summary-strip"><div><span>Candidate</span><strong id="summary-candidate">—</strong></div><div><span>Role</span><strong id="summary-role">—</strong></div><div><span>Prompts reached</span><strong id="summary-questions">—</strong></div><div><span>Session length</span><strong id="summary-duration">—</strong></div></div>
 					<div class="summary-notes"><div class="summary-heading"><div><span class="section-kicker">SESSION NOTES</span><h2>Your captured notes</h2></div><span class="notes-count" id="notes-count">0 entries</span></div><div id="notes-list" class="notes-list"></div></div>
 					<div class="complete-actions"><button class="secondary-button" id="new-session" type="button">Start another interview <span aria-hidden="true">↗</span></button><a class="primary-action" id="review-results-link" href="result.html">Review session results <span aria-hidden="true">→</span></a><a class="dashboard-return" href="dashboard.html">Dashboard</a></div>
 					<p class="result-storage-notice" id="result-storage-notice" role="status" aria-live="polite"></p>
-					<p class="complete-disclaimer">No account data was created. Connect the interview and evaluation services to persist real sessions.</p>
+					<p class="complete-disclaimer">Feedback evaluates written responses only and is intended for practice, not as a hiring decision.</p>
 				</section>
 
 				<footer class="page-footer"><span>SIGNAL / INTERVIEW INTELLIGENCE</span><a href="index.html">Platform overview ↗</a></footer>

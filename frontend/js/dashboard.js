@@ -2,6 +2,7 @@ const sidebar = document.querySelector('#sidebar');
 const menuToggle = document.querySelector('.mobile-menu-toggle');
 const sidebarScrim = document.querySelector('.sidebar-scrim');
 const navLinks = [...document.querySelectorAll('.nav-link')];
+const interviewTableBody = document.querySelector('.activity-table tbody');
 const navSections = navLinks
 	.map((link) => document.querySelector(link.getAttribute('href')))
 	.filter(Boolean);
@@ -162,6 +163,54 @@ const loadResumes = async (searchTerm = '') => {
 	}
 };
 
+const loadInterviews = async () => {
+	try {
+		const interviews = await window.SignalApi.request('/interviews/');
+		if (!Array.isArray(interviews)) throw new Error('The interview list could not be read.');
+		interviewTableBody.replaceChildren();
+		if (!interviews.length) {
+			const row = document.createElement('tr');
+			const cell = document.createElement('td');
+			cell.colSpan = 5;
+			cell.innerHTML = '<div class="empty-state"><span class="empty-mark" aria-hidden="true"><i></i><i></i><i></i></span><h3>No interviews yet</h3><p>Your interview list will appear here when you create your first session.</p><a href="interview.html">Create an interview <span aria-hidden="true">→</span></a></div>';
+			row.append(cell);
+			interviewTableBody.append(row);
+			return;
+		}
+
+		interviews.forEach((interview) => {
+			const row = document.createElement('tr');
+			const topic = document.createElement('td');
+			topic.textContent = interview.topic;
+			const role = document.createElement('td');
+			role.textContent = interview.role_title;
+			const updated = document.createElement('td');
+			updated.textContent = new Date(interview.completed_at || interview.created_at).toLocaleDateString();
+			const status = document.createElement('td');
+			status.textContent = interview.status === 'completed' ? 'Completed' : 'In progress';
+			const action = document.createElement('td');
+			if (interview.status === 'completed') {
+				const reportLink = document.createElement('a');
+				reportLink.href = `result.html?id=${encodeURIComponent(interview.id)}`;
+				reportLink.textContent = 'View report';
+				action.append(reportLink);
+			} else {
+				action.textContent = '—';
+			}
+			row.append(topic, role, updated, status, action);
+			interviewTableBody.append(row);
+		});
+	} catch (error) {
+		const row = document.createElement('tr');
+		const cell = document.createElement('td');
+		cell.colSpan = 5;
+		cell.textContent = `Unable to load interviews: ${error.message}`;
+		row.append(cell);
+		interviewTableBody.replaceChildren(row);
+		if (!window.SignalApi.getToken()) window.location.replace('login.html');
+	}
+};
+
 resumeFileInput?.addEventListener('change', () => {
 	document.querySelector('#selected-file-name').textContent = resumeFileInput.files[0]?.name || 'PDF, DOCX, or TXT';
 });
@@ -237,4 +286,7 @@ document.querySelector('#signout-button')?.addEventListener('click', async () =>
 	window.location.replace('login.html');
 });
 
-if (window.SignalApi?.getToken()) loadResumes();
+if (window.SignalApi?.getToken()) {
+	loadResumes();
+	loadInterviews();
+}
