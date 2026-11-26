@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="theme-color" content="#121916">
+	<meta name="description" content="Review interview notes and evaluation status in your Signal workspace.">
+	<title>Interview review | Signal</title>
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="../css/result.css">
+	<script src="../js/result.js" defer></script>
+</head>
+<body>
+	<a class="skip-link" href="#main-content">Skip to interview review</a>
+	<div class="app-shell">
+		<aside class="sidebar" id="sidebar" aria-label="Workspace navigation">
+			<a class="brand" href="index.html" aria-label="Signal home"><span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i></span><span>signal<span class="brand-period">.</span></span></a>
+			<div class="workspace-label">WORKSPACE</div>
+			<div class="workspace-name"><span class="workspace-icon" aria-hidden="true">S</span><span>Interview workspace</span><span class="workspace-caret" aria-hidden="true">⌄</span></div>
+			<nav class="side-nav" aria-label="Workspace navigation">
+				<span class="nav-group-label">MANAGE</span>
+				<a class="nav-link" href="dashboard.html"><span class="nav-icon" aria-hidden="true">▦</span>Overview</a>
+				<a class="nav-link" href="interview.html"><span class="nav-icon" aria-hidden="true">▤</span>Interviews</a>
+				<a class="nav-link is-active" href="#review" aria-current="page"><span class="nav-icon" aria-hidden="true">⌁</span>Review</a>
+			</nav>
+			<div class="sidebar-bottom"><a class="platform-link" href="index.html"><span aria-hidden="true">↖</span> Platform overview</a><div class="sidebar-foot"><span class="status-dot"></span> FRONTEND PREVIEW</div></div>
+		</aside>
+		<button class="sidebar-scrim" type="button" aria-label="Close navigation"></button>
+
+		<main class="main-content" id="main-content">
+			<header class="topbar">
+				<button class="mobile-menu-toggle" type="button" aria-expanded="false" aria-controls="sidebar" aria-label="Open navigation"><span></span><span></span></button>
+				<div class="breadcrumb"><a href="dashboard.html">Workspace</a><span aria-hidden="true">/</span><a href="dashboard.html#interviews">Interviews</a><span aria-hidden="true">/</span><strong>Review</strong></div>
+				<div class="preview-label"><span class="preview-dot"></span> PREVIEW MODE</div>
+			</header>
+
+			<div class="content-wrap" id="review">
+				<section class="review-view" id="review-view" aria-labelledby="page-title">
+					<div class="page-heading">
+						<div><p class="eyebrow"><span class="eyebrow-line"></span> INTERVIEW WORKSPACE / REVIEW</p><h1 id="page-title">Interview review</h1><p class="heading-copy">A grounded record of the conversation, ready for human evaluation.</p></div>
+						<div class="heading-actions"><button class="quiet-button" id="print-review" type="button" aria-label="Print interview review"><span aria-hidden="true">▧</span> Print review</button><a class="primary-action" href="dashboard.html">Dashboard <span aria-hidden="true">↗</span></a></div>
+					</div>
+
+					<section class="review-notice" aria-label="Evaluation status"><span class="notice-icon" aria-hidden="true">i</span><div><strong>Evaluation is pending</strong><p>No scores or recommendations are generated in this frontend preview. Review the recorded notes against your role criteria.</p></div><span class="pending-badge"><i></i> HUMAN REVIEW</span></section>
+
+					<section class="candidate-summary" aria-label="Interview details">
+						<div class="candidate-identity"><span class="candidate-avatar" id="candidate-avatar" aria-hidden="true">—</span><div><span class="summary-kicker">CANDIDATE</span><h2 id="candidate-name">No session selected</h2><p id="candidate-role">Start or complete an interview to see its details.</p></div></div>
+						<div class="summary-stat"><span class="summary-kicker">SESSION LENGTH</span><strong id="session-length">—</strong></div>
+						<div class="summary-stat"><span class="summary-kicker">PROMPTS REACHED</span><strong id="prompts-reached">—</strong></div>
+						<div class="summary-stat"><span class="summary-kicker">NOTES CAPTURED</span><strong id="notes-captured">—</strong></div>
+					</section>
+
+					<div class="review-grid">
+						<section class="evidence-section" aria-labelledby="evidence-title">
+							<div class="section-heading"><div><p class="section-kicker">CONVERSATION RECORD</p><h2 id="evidence-title">Interview evidence</h2></div><span class="section-meta" id="evidence-count">NO SESSION DATA</span></div>
+							<div class="evidence-list" id="evidence-list"><div class="empty-panel"><span class="empty-glyph" aria-hidden="true">⌁</span><h3>No interview notes to review</h3><p>Complete a preview interview to bring its notes into this review.</p><a href="interview.html">Start an interview <span aria-hidden="true">→</span></a></div></div>
+						</section>
+						<aside class="evaluation-column" aria-label="Evaluation framework">
+							<section class="framework-panel"><div class="section-heading compact-heading"><div><p class="section-kicker">REVIEW FRAMEWORK</p><h2>Evaluation areas</h2></div><span class="framework-mark" aria-hidden="true">◎</span></div><p class="framework-intro">Use role-specific criteria and direct evidence when reviewing. Nothing is scored automatically here.</p>
+								<ul class="criteria-list">
+									<li><span class="criterion-icon" aria-hidden="true">↗</span><div><strong>Role-related skills</strong><small>Evidence against the role requirements</small></div><span class="criterion-state">NOT SCORED</span></li>
+									<li><span class="criterion-icon criterion-coral" aria-hidden="true">≋</span><div><strong>Communication</strong><small>Clarity, listening, and explanation</small></div><span class="criterion-state">NOT SCORED</span></li>
+									<li><span class="criterion-icon criterion-blue" aria-hidden="true">⌁</span><div><strong>Problem solving</strong><small>Reasoning, approach, and learning</small></div><span class="criterion-state">NOT SCORED</span></li>
+									<li><span class="criterion-icon criterion-olive" aria-hidden="true">◇</span><div><strong>Collaboration</strong><small>Working through perspectives together</small></div><span class="criterion-state">NOT SCORED</span></li>
+								</ul>
+								<div class="framework-foot"><span class="foot-check" aria-hidden="true">✓</span><p>Keep the decision with the hiring team. Treat notes as evidence to discuss, not a verdict.</p></div>
+							</section>
+							<section class="next-step-panel"><span class="section-kicker">WHAT’S NEXT</span><h2>Bring the review together.</h2><p>Compare interview evidence with your shared role criteria before deciding on next steps.</p><a href="dashboard.html#insights">Go to workspace insights <span aria-hidden="true">→</span></a></section>
+						</aside>
+					</div>
+					<div class="review-footer"><span>SESSION DATA IS HELD IN THIS TAB ONLY</span><button type="button" id="clear-session">Clear preview data</button></div>
+				</section>
+
+				<section class="no-session-view is-hidden" id="no-session-view" aria-labelledby="no-session-title">
+					<div class="empty-mark-large" aria-hidden="true">⌁</div><p class="eyebrow"><span class="eyebrow-line"></span> NO SESSION IN THIS TAB</p><h1 id="no-session-title">A review starts<br>with a <em>conversation.</em></h1><p class="no-session-copy">There is no completed interview preview to review here. Start a session first; its notes will be available in this tab when you finish.</p><a class="primary-action" href="interview.html">Start an interview <span aria-hidden="true">→</span></a>
+				</section>
+
+				<footer class="page-footer"><span>SIGNAL / INTERVIEW INTELLIGENCE</span><a href="index.html">Platform overview ↗</a></footer>
+			</div>
+		</main>
+	</div>
+</body>
+</html>

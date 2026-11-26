@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="theme-color" content="#121916">
+	<meta name="description" content="Prepare and run a structured interview in your Signal workspace.">
+	<title>New interview | Signal</title>
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="../css/interview.css">
+	<script src="../js/interview.js" defer></script>
+</head>
+<body>
+	<a class="skip-link" href="#main-content">Skip to interview</a>
+	<div class="app-shell">
+		<aside class="sidebar" id="sidebar" aria-label="Workspace navigation">
+			<a class="brand" href="index.html" aria-label="Signal home">
+				<span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i></span>
+				<span>signal<span class="brand-period">.</span></span>
+			</a>
+			<div class="workspace-label">WORKSPACE</div>
+			<div class="workspace-name"><span class="workspace-icon" aria-hidden="true">S</span><span>Interview workspace</span><span class="workspace-caret" aria-hidden="true">⌄</span></div>
+			<nav class="side-nav" aria-label="Workspace navigation">
+				<span class="nav-group-label">MANAGE</span>
+				<a class="nav-link" href="dashboard.html"><span class="nav-icon" aria-hidden="true">▦</span>Overview</a>
+				<a class="nav-link is-active" href="interview.html" aria-current="page"><span class="nav-icon" aria-hidden="true">▤</span>Interviews</a>
+				<a class="nav-link" href="dashboard.html#insights"><span class="nav-icon" aria-hidden="true">⌁</span>Insights</a>
+			</nav>
+			<div class="sidebar-bottom">
+				<a class="platform-link" href="index.html"><span aria-hidden="true">↖</span> Platform overview</a>
+				<div class="sidebar-foot"><span class="status-dot"></span> FRONTEND PREVIEW</div>
+			</div>
+		</aside>
+		<button class="sidebar-scrim" type="button" aria-label="Close navigation"></button>
+
+		<main class="main-content" id="main-content">
+			<header class="topbar">
+				<button class="mobile-menu-toggle" type="button" aria-expanded="false" aria-controls="sidebar" aria-label="Open navigation"><span></span><span></span></button>
+				<div class="breadcrumb"><a href="dashboard.html">Workspace</a><span aria-hidden="true">/</span><strong id="breadcrumb-current">New interview</strong></div>
+				<div class="preview-label"><span class="preview-dot"></span> PREVIEW MODE</div>
+			</header>
+
+			<div class="content-wrap">
+				<section class="setup-view" id="setup-view" aria-labelledby="page-title">
+					<div class="page-heading">
+						<div><p class="eyebrow"><span class="eyebrow-line"></span> INTERVIEW WORKSPACE / 01</p><h1 id="page-title">Set the conversation up for success.</h1><p class="heading-copy">Add a little context. You can adjust your plan before the interview begins.</p></div>
+						<a class="back-dashboard" href="dashboard.html"><span aria-hidden="true">←</span> Dashboard</a>
+					</div>
+
+					<div class="setup-grid">
+						<form class="setup-form" id="setup-form">
+							<div class="form-section-heading"><span class="form-step-number">01</span><div><h2>Session details</h2><p>Use enough context to make this session easy to identify.</p></div></div>
+							<div class="form-fields">
+								<div class="field-group"><label for="candidate-name">Candidate name</label><input id="candidate-name" name="candidateName" type="text" autocomplete="off" placeholder="e.g. Jordan Lee" maxlength="100" required></div>
+								<div class="field-group"><label for="role-title">Role being interviewed for</label><input id="role-title" name="roleTitle" type="text" autocomplete="off" placeholder="e.g. Product designer" maxlength="120" required></div>
+								<div class="field-group"><label for="interview-focus">Interview focus</label><select id="interview-focus" name="focus"><option value="balanced">Balanced conversation</option><option value="behavioral">Behavioral experience</option><option value="technical">Technical problem solving</option><option value="collaboration">Communication &amp; collaboration</option></select></div>
+								<div class="field-group"><label for="session-length">Planned length</label><select id="session-length" name="duration"><option value="30">30 minutes</option><option value="45" selected>45 minutes</option><option value="60">60 minutes</option></select></div>
+							</div>
+							<div class="form-divider"></div>
+							<div class="form-section-heading objectives-heading"><span class="form-step-number">02</span><div><h2>Keep it consistent</h2><p>Use the same role context throughout the interview and review.</p></div></div>
+							<label class="consistency-control" for="structured-mode"><input id="structured-mode" type="checkbox" checked><span class="toggle-track" aria-hidden="true"></span><span><strong>Structured interview</strong><small>Follow a shared set of prompts for this focus area.</small></span></label>
+							<div class="setup-footer"><span class="setup-disclaimer"><span aria-hidden="true">ⓘ</span> Preview prompts are sample content, not AI-generated.</span><button class="primary-action" type="submit">Prepare interview <span aria-hidden="true">→</span></button></div>
+						</form>
+
+						<aside class="prep-aside" aria-label="Preparation notes">
+							<div class="aside-topline"><span>SESSION PREVIEW</span><span>01 / 03</span></div>
+							<div class="prep-graphic" aria-hidden="true"><div class="prep-ring ring-outer"></div><div class="prep-ring ring-inner"></div><div class="prep-center"><span>01</span><i></i><b>LISTEN<br>WITH INTENT</b></div><span class="prep-node node-one">CONTEXT</span><span class="prep-node node-two">EVIDENCE</span></div>
+							<div class="prep-aside-copy"><span class="aside-index">BEFORE YOU BEGIN</span><h2>Good interviews make room for detail.</h2><p>Ask one question at a time. Follow the examples, decisions, and learning behind each answer.</p></div>
+							<div class="aside-checklist"><span><i></i> Role context</span><span><i></i> Focus prompts</span><span><i></i> Private notes</span></div>
+						</aside>
+					</div>
+				</section>
+
+				<section class="session-view is-hidden" id="session-view" aria-labelledby="session-title" aria-live="polite">
+					<div class="session-header">
+						<div><p class="eyebrow"><span class="eyebrow-line"></span> STRUCTURED SESSION / <span id="session-role-label">ROLE</span></p><h1 id="session-title">Interview in progress</h1><p class="session-candidate"><span id="session-candidate-name">Candidate</span><span>·</span><span id="session-focus-label">Balanced conversation</span></p></div>
+						<div class="session-clock"><span class="clock-indicator"></span><span class="clock-caption">ELAPSED</span><time id="session-timer">00:00</time></div>
+					</div>
+					<div class="session-progress" aria-label="Question progress"><div class="progress-label"><span id="question-count">QUESTION 01 OF 05</span><span id="progress-percent">20%</span></div><div class="progress-track"><span id="progress-fill"></span></div></div>
+					<div class="session-grid">
+						<section class="question-panel" aria-labelledby="question-title">
+							<div class="question-topline"><span class="question-category" id="question-category">OPENING</span><span class="question-mark" aria-hidden="true">Q</span></div>
+							<p class="question-overline">ASK THE CANDIDATE</p><h2 id="question-title"></h2><p class="question-prompt-hint" id="question-hint"></p>
+							<label class="answer-label" for="answer-notes">Your notes <span>Private to this preview</span></label>
+							<textarea id="answer-notes" rows="5" placeholder="Capture key points, examples, or follow-up questions…"></textarea>
+							<div class="question-controls"><button class="secondary-button" id="previous-question" type="button" disabled><span aria-hidden="true">←</span> Previous</button><span class="answer-saved" id="answer-saved" aria-live="polite">Notes stay in this tab</span><button class="primary-action" id="next-question" type="button">Next question <span aria-hidden="true">→</span></button></div>
+						</section>
+						<aside class="session-aside">
+							<section class="session-guide"><div class="session-aside-label"><span class="guide-pulse"></span> INTERVIEW GUIDE</div><h2>Stay curious.</h2><p>Give the candidate space to finish their thought before moving on.</p><div class="follow-up"><span>FOLLOW-UP IDEA</span><p id="follow-up-text">What made that experience significant for you?</p></div></section>
+							<section class="session-tools"><p class="section-kicker">SESSION TOOLS</p><button class="tool-button" id="finish-session" type="button"><span class="tool-icon" aria-hidden="true">✓</span><span><strong>Finish interview</strong><small>Review this session’s notes</small></span><span class="tool-arrow" aria-hidden="true">→</span></button><button class="tool-button" id="cancel-session" type="button"><span class="tool-icon cancel-icon" aria-hidden="true">×</span><span><strong>End without finishing</strong><small>Discard this preview session</small></span><span class="tool-arrow" aria-hidden="true">→</span></button></section>
+						</aside>
+					</div>
+					<p class="session-disclaimer"><span aria-hidden="true">ⓘ</span> This is a local preview. No audio is recorded and notes are not saved to an account.</p>
+				</section>
+
+				<section class="complete-view is-hidden" id="complete-view" aria-labelledby="complete-title" tabindex="-1">
+					<div class="complete-mark" aria-hidden="true"><span>✓</span></div>
+					<p class="eyebrow"><span class="eyebrow-line"></span> SESSION WRAPPED</p>
+					<h1 id="complete-title">A good conversation<br><em>leaves a trail.</em></h1>
+					<p class="complete-copy">Your preview notes are ready to review. They remain in this browser tab only.</p>
+					<div class="summary-strip"><div><span>Candidate</span><strong id="summary-candidate">—</strong></div><div><span>Role</span><strong id="summary-role">—</strong></div><div><span>Prompts reached</span><strong id="summary-questions">—</strong></div><div><span>Session length</span><strong id="summary-duration">—</strong></div></div>
+					<div class="summary-notes"><div class="summary-heading"><div><span class="section-kicker">SESSION NOTES</span><h2>Your captured notes</h2></div><span class="notes-count" id="notes-count">0 entries</span></div><div id="notes-list" class="notes-list"></div></div>
+					<div class="complete-actions"><button class="secondary-button" id="new-session" type="button">Start another interview <span aria-hidden="true">↗</span></button><a class="primary-action" id="review-results-link" href="result.html">Review session results <span aria-hidden="true">→</span></a><a class="dashboard-return" href="dashboard.html">Dashboard</a></div>
+					<p class="result-storage-notice" id="result-storage-notice" role="status" aria-live="polite"></p>
+					<p class="complete-disclaimer">No account data was created. Connect the interview and evaluation services to persist real sessions.</p>
+				</section>
+
+				<footer class="page-footer"><span>SIGNAL / INTERVIEW INTELLIGENCE</span><a href="index.html">Platform overview ↗</a></footer>
+			</div>
+		</main>
+	</div>
+</body>
+</html>

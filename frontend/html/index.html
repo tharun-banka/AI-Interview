@@ -1,0 +1,172 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="theme-color" content="#101614">
+	<meta name="description" content="A closer look at the AI interview platform: its interview lifecycle, service architecture, and evaluation principles.">
+	<title>Signal | AI Interview Architecture</title>
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="../css/index.css">
+	<script src="../js/index.js" defer></script>
+</head>
+<body>
+	<a class="skip-link" href="#main-content">Skip to content</a>
+	<div class="scroll-progress" aria-hidden="true"><span></span></div>
+
+	<header class="site-header">
+		<a class="brand" href="#top" aria-label="Signal home">
+			<span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i></span>
+			<span>signal<span class="brand-period">.</span></span>
+		</a>
+		<button class="menu-toggle" type="button" aria-expanded="false" aria-controls="primary-nav" aria-label="Open navigation">
+			<span></span><span></span>
+		</button>
+		<nav class="primary-nav" id="primary-nav" aria-label="Main navigation">
+			<a href="#lifecycle">Lifecycle</a>
+			<a href="#architecture">Architecture</a>
+			<a href="#principles">Principles</a>
+		</nav>
+		<a class="header-action" href="login.html">Sign in <span aria-hidden="true">↗</span></a>
+	</header>
+
+	<main id="main-content">
+		<section class="hero section-shell" id="top" aria-labelledby="hero-title">
+			<div class="hero-copy reveal">
+				<p class="eyebrow"><span class="eyebrow-line"></span> AI interview platform / system overview</p>
+				<h1 id="hero-title">Better interviews<br>start with <em>better signal.</em></h1>
+				<p class="hero-description">A considered system for preparing, running, and understanding interviews. One connected flow, from the first question to the final analysis.</p>
+				<div class="hero-actions">
+					<a class="button button-primary" href="#architecture">Explore the system <span aria-hidden="true">↓</span></a>
+					<a class="text-link" href="#lifecycle">See the interview flow <span aria-hidden="true">↗</span></a>
+				</div>
+			</div>
+			<div class="hero-art reveal" aria-label="Illustration of an interview signal moving through a system">
+				<div class="art-topline"><span>LIVE SYSTEM MAP</span><span>01 — 05</span></div>
+				<div class="signal-visual" aria-hidden="true">
+					<div class="signal-orbit orbit-one"></div>
+					<div class="signal-orbit orbit-two"></div>
+					<div class="signal-orbit orbit-three"></div>
+					<div class="signal-core"><span>AI</span><b>INTERVIEW<br>ENGINE</b></div>
+					<span class="orbit-node node-a">INPUT</span>
+					<span class="orbit-node node-b">CONTEXT</span>
+					<span class="orbit-node node-c">INSIGHT</span>
+					<span class="orbit-dot dot-a"></span><span class="orbit-dot dot-b"></span><span class="orbit-dot dot-c"></span>
+				</div>
+				<div class="art-caption"><span>From conversation</span><span class="caption-arrow" aria-hidden="true">→</span><span>to useful insight</span></div>
+			</div>
+			<div class="hero-bottom"><span>DESIGNED FOR STRUCTURED CONVERSATION</span><a href="#lifecycle">Scroll to explore <span aria-hidden="true">↓</span></a></div>
+		</section>
+
+		<section class="lifecycle section-shell" id="lifecycle" aria-labelledby="lifecycle-title">
+			<div class="section-heading reveal">
+				<p class="eyebrow"><span class="eyebrow-line"></span> 01 / The lifecycle</p>
+				<h2 id="lifecycle-title">One conversation.<br><em>Four deliberate stages.</em></h2>
+				<p>Each stage adds a different kind of context, keeping the interview focused from preparation through reflection.</p>
+			</div>
+			<div class="lifecycle-track">
+				<article class="stage reveal">
+					<div class="stage-top"><span class="stage-number">01</span><span class="stage-symbol symbol-prep" aria-hidden="true">＋</span></div>
+					<h3>Prepare</h3>
+					<p>Shape a role-specific plan and bring relevant research into the room before the first question.</p>
+					<span class="stage-tag">BEFORE THE SESSION</span>
+				</article>
+				<article class="stage reveal">
+					<div class="stage-top"><span class="stage-number">02</span><span class="stage-symbol symbol-talk" aria-hidden="true">↗</span></div>
+					<h3>Interview</h3>
+					<p>Move through a guided conversation while keeping the candidate’s responses at the center.</p>
+					<span class="stage-tag">DURING THE SESSION</span>
+				</article>
+				<article class="stage reveal">
+					<div class="stage-top"><span class="stage-number">03</span><span class="stage-symbol symbol-review" aria-hidden="true">≋</span></div>
+					<h3>Evaluate</h3>
+					<p>Turn interview evidence into a clear, criteria-led view that is easier to review and discuss.</p>
+					<span class="stage-tag">AFTER THE SESSION</span>
+				</article>
+				<article class="stage reveal">
+					<div class="stage-top"><span class="stage-number">04</span><span class="stage-symbol symbol-learn" aria-hidden="true">↗</span></div>
+					<h3>Learn</h3>
+					<p>Bring the outcome together in final analytics, giving teams a useful basis for their next decision.</p>
+					<span class="stage-tag">ACROSS THE PROCESS</span>
+				</article>
+			</div>
+			<div class="lifecycle-note reveal"><span class="note-mark" aria-hidden="true">↳</span><p><strong>The through-line</strong> is evidence: context informs the conversation, and the conversation informs the review.</p></div>
+		</section>
+
+		<section class="architecture section-shell" id="architecture" aria-labelledby="architecture-title">
+			<div class="section-heading architecture-heading reveal">
+				<p class="eyebrow"><span class="eyebrow-line"></span> 02 / The architecture</p>
+				<h2 id="architecture-title">A clear path from<br><em>interface to insight.</em></h2>
+				<p>Requests enter through the web client, pass through the application layer, and meet the services that power each interview.</p>
+			</div>
+
+			<div class="architecture-map reveal" role="img" aria-label="Architecture: user uses the HTML, CSS and JavaScript frontend; REST and AJAX connect to Django and Django REST Framework. The backend works with PostgreSQL, AI services using Gemini or Ollama with LangChain and RAG, and a research agent using a web search API and web sources. These feed the interview engine, evaluation engine, and final analytics.">
+				<div class="map-client map-node">
+					<span class="map-kicker">CLIENT</span><strong>User</strong>
+					<div class="client-stack"><span>HTML</span><span>CSS</span><span>JavaScript</span></div>
+					<small>Browser interface</small>
+				</div>
+				<div class="map-connector connector-client" aria-hidden="true"><span>REST / AJAX</span><i></i></div>
+				<div class="map-backend map-node">
+					<span class="map-kicker">APPLICATION LAYER</span><strong>Django <b>+</b> DRF</strong>
+					<small>Routes requests and coordinates services</small>
+				</div>
+				<div class="service-connectors" aria-hidden="true"><i></i><i></i><i></i></div>
+				<div class="service-grid">
+					<article class="service-node database-node">
+						<span class="service-index">A / PERSISTENCE</span><span class="service-icon" aria-hidden="true">▤</span>
+						<h3>PostgreSQL</h3><p>Application data</p>
+					</article>
+					<article class="service-node ai-node">
+						<span class="service-index">B / GENERATION</span><span class="service-icon" aria-hidden="true">✳</span>
+						<h3>AI services</h3><p>Gemini or Ollama <span>→</span> LangChain <span>→</span> RAG</p>
+					</article>
+					<article class="service-node research-node">
+						<span class="service-index">C / DISCOVERY</span><span class="service-icon" aria-hidden="true">⌕</span>
+						<h3>Research agent</h3><p>Web Search API <span>→</span> web sources</p>
+					</article>
+				</div>
+				<div class="engine-flow" aria-label="Interview engine, then evaluation engine, then final analytics">
+					<div class="engine-node"><span>01</span><strong>Interview engine</strong></div>
+					<span class="engine-arrow" aria-hidden="true">→</span>
+					<div class="engine-node"><span>02</span><strong>Evaluation engine</strong></div>
+					<span class="engine-arrow" aria-hidden="true">→</span>
+					<div class="engine-node engine-output"><span>03</span><strong>Final analytics</strong></div>
+				</div>
+				<p class="map-footnote"><span class="legend-dot"></span> Services orchestrated by the Django backend</p>
+			</div>
+		</section>
+
+		<section class="principles section-shell" id="principles" aria-labelledby="principles-title">
+			<div class="principles-intro reveal">
+				<p class="eyebrow"><span class="eyebrow-line"></span> 03 / Operating principles</p>
+				<h2 id="principles-title">Useful intelligence<br>needs <em>good boundaries.</em></h2>
+				<p>The architecture is only part of the story. The experience also depends on how information is handled, presented, and reviewed.</p>
+			</div>
+			<div class="principle-list">
+				<article class="principle reveal"><span class="principle-index">01</span><div><h3>Keep the human in the decision</h3><p>Present analysis as decision support. The hiring team remains responsible for interpretation and outcomes.</p></div><span class="principle-glyph" aria-hidden="true">◎</span></article>
+				<article class="principle reveal"><span class="principle-index">02</span><div><h3>Make context traceable</h3><p>Separate interview evidence from external research so reviewers can understand where information came from.</p></div><span class="principle-glyph" aria-hidden="true">⌁</span></article>
+				<article class="principle reveal"><span class="principle-index">03</span><div><h3>Design for consistent review</h3><p>Use shared evaluation criteria to make feedback easier to compare, explain, and revisit.</p></div><span class="principle-glyph" aria-hidden="true">≡</span></article>
+			</div>
+			<div class="principles-aside reveal"><span class="aside-rule"></span><p>Good tooling should make the reasoning easier to inspect, not harder to see.</p><span class="aside-signature">SIGNAL / SYSTEM NOTE 03</span></div>
+		</section>
+
+		<section class="closing section-shell" aria-labelledby="closing-title">
+			<div class="closing-grid reveal">
+				<div>
+					<p class="eyebrow"><span class="eyebrow-line"></span> Ready when you are</p>
+					<h2 id="closing-title">Bring the whole<br>interview into <em>focus.</em></h2>
+				</div>
+				<div class="closing-action">
+					<p>Move from system overview to your interview workspace.</p>
+					<a class="button button-light" href="login.html">Enter Signal <span aria-hidden="true">↗</span></a>
+					<span class="closing-meta">AI INTERVIEW PLATFORM <span>·</span> BUILT AROUND EVIDENCE</span>
+				</div>
+			</div>
+			<footer class="site-footer"><a class="brand brand-footer" href="#top"><span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i></span><span>signal<span class="brand-period">.</span></span></a><span>Interview intelligence, made legible.</span><a href="#top">Back to top ↑</a><span class="footer-year">© 2026 SIGNAL</span></footer>
+		</section>
+	</main>
+</body>
+</html>

@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="theme-color" content="#121916">
+	<meta name="description" content="Create an account for your Signal interview workspace.">
+	<title>Create account | Signal</title>
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="../css/login.css">
+	<link rel="stylesheet" href="../css/signup.css">
+	<script src="../js/api-client.js" defer></script>
+	<script src="../js/signup.js?v=2" defer></script>
+</head>
+<body>
+	<a class="skip-link" href="#create-account-title">Skip to create account</a>
+	<header class="login-header">
+		<a class="brand" href="index.html" aria-label="Signal, back to overview">
+			<span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i></span>
+			<span>signal<span class="brand-period">.</span></span>
+		</a>
+		<a class="back-link" href="index.html"><span aria-hidden="true">←</span> Back to overview</a>
+	</header>
+
+	<main class="login-layout signup-layout">
+		<aside class="login-story" aria-labelledby="story-title">
+			<div class="story-content">
+				<p class="eyebrow"><span class="eyebrow-line"></span> A THOUGHTFUL WAY TO INTERVIEW</p>
+				<h1 id="story-title">Make every conversation count.</h1>
+				<p class="story-description">Bring preparation, research, and structured evaluation into one workspace for your team.</p>
+			</div>
+			<div class="conversation-visual" aria-hidden="true">
+				<div class="visual-label"><span>YOUR WORKSPACE</span><span class="visual-live"><i></i> READY TO BEGIN</span></div>
+				<div class="signup-flow">
+					<div class="flow-step"><span>01</span><i class="flow-icon flow-plan">＋</i><b>Prepare</b></div>
+					<span class="flow-connector"></span>
+					<div class="flow-step"><span>02</span><i class="flow-icon flow-talk">↗</i><b>Interview</b></div>
+					<span class="flow-connector"></span>
+					<div class="flow-step"><span>03</span><i class="flow-icon flow-review">≋</i><b>Understand</b></div>
+				</div>
+				<div class="visual-caption"><span>ONE CONNECTED INTERVIEW FLOW</span></div>
+			</div>
+			<p class="story-footnote">SIGNAL <span>·</span> INTERVIEW INTELLIGENCE</p>
+		</aside>
+
+		<section class="login-panel signup-panel" aria-labelledby="create-account-title">
+			<div class="login-form-wrap">
+				<p class="eyebrow form-eyebrow"><span class="eyebrow-line"></span> GET STARTED</p>
+				<h2 id="create-account-title">Create your account.</h2>
+				<p class="form-intro">Set up your details to get started with Signal.</p>
+				<p class="account-status" id="account-status" role="status" aria-live="polite"><span aria-hidden="true">i</span><span id="account-status-text">Your account details will be stored in the application database.</span></p>
+
+				<form class="login-form signup-form" id="signup-form">
+					<div class="field-group">
+						<label for="full-name">Full name</label>
+						<input id="full-name" name="fullName" type="text" autocomplete="name" placeholder="Your name" required minlength="2" maxlength="100">
+					</div>
+					<div class="field-group">
+						<label for="email">Work email</label>
+						<input id="email" name="email" type="email" autocomplete="email" placeholder="you@company.com" required>
+					</div>
+					<div class="field-group">
+						<div class="field-label-row"><label for="password">Password</label><span class="field-hint">10+ characters</span></div>
+						<div class="password-control">
+							<input id="password" name="password" type="password" autocomplete="new-password" placeholder="Create a password" required minlength="10" aria-describedby="password-hint">
+							<button class="password-toggle" type="button" aria-label="Show password" aria-pressed="false" aria-controls="password">Show</button>
+						</div>
+						<p class="password-hint" id="password-hint">Use at least 10 characters; avoid common or all-numeric passwords.</p>
+					</div>
+					<div class="field-group">
+						<label for="confirm-password">Confirm password</label>
+						<div class="password-control">
+							<input id="confirm-password" name="confirmPassword" type="password" autocomplete="new-password" placeholder="Enter your password again" required minlength="10" aria-describedby="confirm-hint">
+							<button class="password-toggle" type="button" aria-label="Show confirmation password" aria-pressed="false" aria-controls="confirm-password">Show</button>
+						</div>
+						<p class="password-hint" id="confirm-hint"></p>
+					</div>
+					<button class="submit-button" type="submit"><span class="submit-label">Create account</span><span aria-hidden="true">↗</span></button>
+					<p class="form-message" id="form-message" role="alert" aria-live="assertive"></p>
+				</form>
+
+				<div class="form-bottom signup-bottom"><span class="bottom-rule"></span><span>Already have an account?</span><a href="login.html">Sign in <span aria-hidden="true">→</span></a></div>
+			</div>
+			<footer class="login-footer"><span>© 2026 SIGNAL</span><span>INTERVIEW INTELLIGENCE</span></footer>
+		</section>
+	</main>
+</body>
+</html>

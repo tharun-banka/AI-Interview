@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="theme-color" content="#121916">
+	<meta name="description" content="Review interview activity and evaluation insights in your Signal workspace.">
+	<title>Dashboard | Signal</title>
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="../css/dashboard.css">
+	<script src="../js/api-client.js" defer></script>
+	<script src="../js/dashboard.js" defer></script>
+</head>
+<body>
+	<a class="skip-link" href="#main-content">Skip to dashboard</a>
+	<div class="app-shell">
+		<aside class="sidebar" id="sidebar" aria-label="Workspace navigation">
+			<a class="brand" href="index.html" aria-label="Signal home">
+				<span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i></span>
+				<span>signal<span class="brand-period">.</span></span>
+			</a>
+			<div class="workspace-label">WORKSPACE</div>
+			<div class="workspace-name"><span class="workspace-icon" aria-hidden="true">S</span><span>Interview workspace</span><span class="workspace-caret" aria-hidden="true">⌄</span></div>
+			<nav class="side-nav" aria-label="Dashboard sections">
+				<span class="nav-group-label">MANAGE</span>
+				<a class="nav-link is-active" href="#overview" aria-current="page"><span class="nav-icon" aria-hidden="true">▦</span>Overview</a>
+				<a class="nav-link" href="#interviews"><span class="nav-icon" aria-hidden="true">▤</span>Interviews</a>
+				<a class="nav-link" href="#insights"><span class="nav-icon" aria-hidden="true">⌁</span>Insights</a>
+			</nav>
+			<div class="sidebar-bottom">
+				<a class="platform-link" href="index.html"><span aria-hidden="true">↖</span> Platform overview</a>
+				<div class="sidebar-foot"><span class="status-dot"></span> DATABASE CONNECTED</div>
+			</div>
+		</aside>
+		<button class="sidebar-scrim" type="button" aria-label="Close navigation"></button>
+
+		<main class="main-content" id="main-content">
+			<header class="topbar">
+				<button class="mobile-menu-toggle" type="button" aria-expanded="false" aria-controls="sidebar" aria-label="Open navigation"><span></span><span></span></button>
+				<div class="breadcrumb"><span>Workspace</span><span aria-hidden="true">/</span><strong>Overview</strong></div>
+				<div class="topbar-date"><span class="date-mark" aria-hidden="true">◷</span><time id="today-label"></time></div>
+			</header>
+
+			<div class="content-wrap">
+				<section class="page-intro" id="overview" aria-labelledby="page-title">
+					<div>
+						<p class="eyebrow"><span class="eyebrow-line"></span> YOUR INTERVIEW WORKSPACE</p>
+						<h1 id="page-title">Dashboard</h1>
+						<p class="intro-copy">A clear view of interview activity and evaluation insights.</p>
+					</div>
+					<a class="primary-action" href="interview.html"><span class="action-plus" aria-hidden="true">＋</span> New interview</a>
+				</section>
+
+				<section class="workspace-notice" aria-label="Database status">
+					<div class="notice-icon" aria-hidden="true">i</div>
+					<div class="notice-copy"><strong>Database connected</strong><p>Account and resume data is protected by your sign-in and stored by the Django API.</p></div>
+					<button class="signout-button" id="signout-button" type="button">Sign out</button>
+				</section>
+
+				<section class="resume-manager" id="resumes" aria-labelledby="resume-title">
+					<div class="resume-heading"><div><p class="section-kicker">CANDIDATE FILES</p><h2 id="resume-title">Resume library</h2><p>Upload a resume to store the original file and searchable extracted text.</p></div><span class="resume-format">PDF · DOCX · TXT <span>UP TO 10 MB</span></span></div>
+					<div class="resume-actions-row">
+						<form class="resume-upload-form" id="resume-upload-form">
+							<label class="file-picker" for="resume-file"><span class="file-picker-icon" aria-hidden="true">↑</span><span><strong>Choose a resume</strong><small id="selected-file-name">PDF, DOCX, or TXT</small></span><input id="resume-file" name="file" type="file" accept=".pdf,.docx,.txt,application/pdf,text/plain,application/vnd.openxmlformats-officedocument.wordprocessingml.document" required></label>
+							<button class="resume-upload-button" type="submit"><span aria-hidden="true">＋</span> Upload</button>
+						</form>
+						<form class="resume-search-form" id="resume-search-form" role="search"><label class="visually-hidden" for="resume-search">Search resume text</label><span aria-hidden="true">⌕</span><input id="resume-search" type="search" placeholder="Search resume text"><button type="submit">Search</button><button class="clear-search" id="clear-resume-search" type="button" aria-label="Clear search" title="Clear search">×</button></form>
+					</div>
+					<p class="resume-message" id="resume-message" role="status" aria-live="polite"></p>
+					<div class="resume-list" id="resume-list" aria-live="polite"><p class="resume-empty">Your uploaded resumes will appear here.</p></div>
+				</section>
+
+				<div class="dashboard-columns">
+					<section class="activity-section" id="interviews" aria-labelledby="activity-title">
+						<div class="section-title-row">
+							<div><p class="section-kicker">WORK QUEUE</p><h2 id="activity-title">Interview activity</h2></div>
+							<a class="quiet-link" href="interview.html">Start interview <span aria-hidden="true">↗</span></a>
+						</div>
+						<div class="activity-table-wrap">
+							<table class="activity-table">
+								<thead><tr><th scope="col">INTERVIEW</th><th scope="col">ROLE</th><th scope="col">LAST UPDATED</th><th scope="col">STATUS</th><th scope="col"><span class="visually-hidden">Open interview</span></th></tr></thead>
+								<tbody><tr><td colspan="5"><div class="empty-state"><span class="empty-mark" aria-hidden="true"><i></i><i></i><i></i></span><h3>No interviews yet</h3><p>Your interview list will appear here when you create your first session.</p><a href="interview.html">Create an interview <span aria-hidden="true">→</span></a></div></td></tr></tbody>
+							</table>
+						</div>
+					</section>
+
+					<aside class="workspace-aside" aria-label="Workspace details">
+						<section class="readiness-panel" aria-labelledby="readiness-title">
+							<div class="panel-heading"><span class="panel-icon" aria-hidden="true">◈</span><span class="panel-label">WORKSPACE STATUS</span></div>
+							<h2 id="readiness-title">Workspace connected</h2>
+							<p>Your account and resume library are stored in the application database and scoped to your sign-in.</p>
+							<div class="connection-row"><span class="connection-indicator connection-online"></span><span>Django database</span><span class="connection-state connection-ready">CONNECTED</span></div>
+						</section>
+						<section class="guide-panel" aria-labelledby="guide-title">
+							<p class="section-kicker">A SIMPLE RHYTHM</p><h2 id="guide-title">From plan to perspective</h2>
+							<ol class="guide-list">
+								<li><span>01</span><div><strong>Prepare</strong><p>Set the focus for your conversation.</p></div></li>
+								<li><span>02</span><div><strong>Interview</strong><p>Capture a clear view of the discussion.</p></div></li>
+								<li><span>03</span><div><strong>Review</strong><p>Bring evidence into the evaluation.</p></div></li>
+							</ol>
+						</section>
+					</aside>
+				</div>
+
+				<section class="insights-section" id="insights" aria-labelledby="insights-title">
+					<div class="section-title-row">
+						<div><p class="section-kicker">DECISION SUPPORT</p><h2 id="insights-title">Evaluation insights</h2></div>
+						<span class="section-meta">AVAILABLE AFTER YOUR FIRST REVIEW</span>
+					</div>
+					<div class="insights-empty"><div class="insights-rule" aria-hidden="true"></div><p>Once interviews are reviewed, your evaluation summaries will be gathered here.</p><a href="interview.html">Begin with an interview <span aria-hidden="true">→</span></a></div>
+				</section>
+				<footer class="page-footer"><span>SIGNAL / INTERVIEW INTELLIGENCE</span><a href="index.html">Platform overview ↗</a></footer>
+			</div>
+		</main>
+	</div>
+</body>
+</html>
